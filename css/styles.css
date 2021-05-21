@@ -1,7 +1,8 @@
 * {
-  overflow-y: auto;
-  overflow-x: auto;
-  background-color: white;
+  /* overflow-y: auto;
+  overflow-x: auto; */
+  margin: 0;
+  padding: 0;
 }
 
 .nav {
@@ -38,15 +39,21 @@
 
 .item-card {
   border: 1px solid rgb(216, 208, 208);
-  padding: 10px;
+  height: fit-content;
 }
 
 .card-items {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .item-offer {
   background-color: rgb(125, 206, 125);
   padding: 10px;
+  height: 20px;
+  color: white;
+}
+
+.item-img {
+  
 }
