@@ -1,5 +1,92 @@
- * {
-   overflow-y: auto;
-   overflow-x: auto;
-   background-color: white;
- }
+* {
+  /* overflow-y: auto;
+  overflow-x: auto; */
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --green: rgb(125, 206, 125);
+  --gray: rgb(221, 221, 221);
+  --blue: rgb(69, 207, 231);
+  --white: #fff;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--gray);
+  border-bottom: 1px solid var(--gray);
+  /* margin: 2px 0; */
+  padding: 10px;
+}
+
+.nav-btn {
+  background-color: var(--green);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--white);
+}
+
+.main-body {
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+  width: 100%;
+  display: grid;
+  /* Define Auto Row size */
+  grid-auto-rows: 100px;
+  /*Define our columns */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1em;
+}
+
+.item-card {
+  border: 1px solid var(--gray);
+  height: fit-content;
+}
+
+.card-items {
+  display: flex;
+  padding: 30px 0;
+}
+
+.item-offer {
+  background-color: var(--green);
+  padding: 10px;
+  height: 20px;
+  color: var(--white);
+}
+
+.card-footer {
+  background-color: var(--gray);
+  padding: 10px;
+  color: rgb(108, 110, 112);
+}
+
+.item-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-price {
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
+}
+
+.item-actual-price {
+  text-decoration: line-through red 2px;
+}
+
+.item-add-to-card {
+  padding: 5px;
+  border: 2px solid var(--blue);
+  border-radius: 5px;
+  background-color: var(--gray);
+  color: var(--blue);
+}

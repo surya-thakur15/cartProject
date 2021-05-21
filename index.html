@@ -1,17 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="" />
-    <title>Cart</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
 
+
   <body>
-    <h1>Hi There! </h1>
+    <header class="nav">
+      <div>All Items</div>
+      <div>
+        <button class="nav-btn">Item to add in the cart</button>
+      </div>
+      <!-- <input placeholder="search"/>
+        <i class="fa fa-search" aria-hidden="true"></i> -->
+    </header>
 
-    <div id="parent">
+    <div class="main-body">
+
+      <div id="parent">
+        <strong>This Data is Coming form JSON</strong>
+      </div>
+
+
+      <section class="item-card">
+        <div class="card-items">
+          <div class="item-offer">
+            <p>10% Off</p>
+          </div>
+          <div class="item-img">
+            <img src="https://place-hold.it/300" alt="" height="250px" />
+          </div>
+        </div>
+        <div class="card-footer">
+          <p class="item-name">Item-1</p>
+          <div class="item-details">
+            <div class="item-price">
+              <p class="item-actual-price">$200</p>
+              <p class="item-discount-price">$180</p>
+            </div>
+            <button class="item-add-to-card">Add to cart</button>
+          </div>
+        </div>
+      </section>
     </div>
-
+    
     <script>
       fetch('data.json')
       .then(response => {
@@ -32,4 +69,6 @@
 
   </body>
 
+
+  </body>
 </html>
