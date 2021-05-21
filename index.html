@@ -3,13 +3,33 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="" />
-    <title>Covid Caller</title>
+    <title>Cart</title>
   </head>
 
   <body>
-    <p>
-      Hi There !
-    </p>
+    <h1>Hi There! </h1>
+
+    <div id="parent">
+    </div>
+
+    <script>
+      fetch('data.json')
+      .then(response => {
+        return response.json();
+      }).then(data => {
+        data.items.map((item,i) => {
+          console.log("item", item);
+          d = document.createElement('div');
+          d.setAttribute("id", "id_"+(i+1) );
+          d.innerHTML = item.name;
+          document.getElementById("parent").appendChild(d); 
+        })
+        // console.log(data);
+      }).catch(err => {
+        console.log("Error", err);
+      });
+    </script>
+
   </body>
 
 </html>
