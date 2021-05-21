@@ -1,0 +1,56 @@
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  width: 70%;
+  margin: 0 30 0 0px;
+}
+
+.billing-items {
+  width: 30%;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.my-2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.item-offer {
+  background-color: var(--green);
+  padding: 10px;
+  height: 20px;
+  color: var(--white);
+}
+
+.card-footer {
+  background-color: var(--gray);
+  padding: 10px;
+  color: rgb(108, 110, 112);
+}
+
+.item-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-price {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.item-actual-price {
+  text-decoration: line-through red 2px;
+}
+
+.item-add-to-card {
+  padding: 5px;
+  border: 2px solid var(--blue);
+  border-radius: 5px;
+  background-color: var(--gray);
+  color: var(--blue);
+}
