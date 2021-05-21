@@ -1,5 +1,52 @@
- * {
-   overflow-y: auto;
-   overflow-x: auto;
-   background-color: white;
- }
+* {
+  overflow-y: auto;
+  overflow-x: auto;
+  background-color: white;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgb(216, 208, 208);
+  border-bottom: 1px solid rgb(216, 208, 208);
+  /* margin: 2px 0; */
+  padding: 10px;
+}
+
+.nav-btn {
+  background-color: rgb(125, 206, 125);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+}
+
+.main-body {
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+  width: 100%;
+  display: grid;
+  /* Define Auto Row size */
+  grid-auto-rows: 100px;
+  /*Define our columns */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1em;
+}
+
+.item-card {
+  border: 1px solid rgb(216, 208, 208);
+  padding: 10px;
+}
+
+.card-items {
+  display: flex;
+  justify-content: center;
+}
+
+.item-offer {
+  background-color: rgb(125, 206, 125);
+  padding: 10px;
+}
