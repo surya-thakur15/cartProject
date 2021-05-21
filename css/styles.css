@@ -5,22 +5,29 @@
   padding: 0;
 }
 
+:root {
+  --green: rgb(125, 206, 125);
+  --gray: rgb(221, 221, 221);
+  --blue: rgb(69, 207, 231);
+  --white: #fff;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid rgb(216, 208, 208);
-  border-bottom: 1px solid rgb(216, 208, 208);
+  border-top: 1px solid var(--gray);
+  border-bottom: 1px solid var(--gray);
   /* margin: 2px 0; */
   padding: 10px;
 }
 
 .nav-btn {
-  background-color: rgb(125, 206, 125);
+  background-color: var(--green);
   border: none;
   border-radius: 5px;
   padding: 10px;
-  color: white;
+  color: var(--white);
 }
 
 .main-body {
@@ -38,22 +45,48 @@
 }
 
 .item-card {
-  border: 1px solid rgb(216, 208, 208);
+  border: 1px solid var(--gray);
   height: fit-content;
 }
 
 .card-items {
   display: flex;
-  /* justify-content: center; */
+  padding: 30px 0;
 }
 
 .item-offer {
-  background-color: rgb(125, 206, 125);
+  background-color: var(--green);
   padding: 10px;
   height: 20px;
-  color: white;
+  color: var(--white);
 }
 
-.item-img {
-  
+.card-footer {
+  background-color: var(--gray);
+  padding: 10px;
+  color: rgb(108, 110, 112);
+}
+
+.item-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-price {
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
+}
+
+.item-actual-price {
+  text-decoration: line-through red 2px;
+}
+
+.item-add-to-card {
+  padding: 5px;
+  border: 2px solid var(--blue);
+  border-radius: 5px;
+  background-color: var(--gray);
+  color: var(--blue);
 }
