@@ -6,32 +6,30 @@
 
 # Strucure
 ----
+```
 ├── css
-│   ├── card.css
-│   ├── mobile_card.css
-│   ├── mobile_nav.css
-│   ├── nav.css
-│   ├── styleMobile.css
-│   └── styles.css
+│   ├── card.css
+│   ├── mobile_card.css
+│   ├── mobile_nav.css
+│   ├── nav.css
+│   ├── styleMobile.css
+│   └── styles.css
 ├── data
-│  └── data.json
+│   └── data.json
 ├── images
+│   ├── css.png
+│   ├── html.png
+│   └── js.png
 ├── index.html
 ├── README.md
 └── scripts
     ├── index.js
     └── script.js
+```
 
 
 
 
 # Used
 ----
-## `HTML`
-<img src='images/html.png' height=100>
-
-## `CSS`
-<img src='images/css.png' height=100>
-
-## `JS`
-<img src='images/js.png' height=100>
+<img src='images/html.png' height=100> <img src='images/css.png' height=100> <img src='images/js.png' height=100>
