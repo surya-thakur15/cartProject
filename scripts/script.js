@@ -1,14 +1,39 @@
+
+const addToCart = (name) => {
+
+    var cartDataValues = localStorage.getItem('cartData');
+
+    if (cartDataValues) {
+        // present
+        localStorage.setItem('cartData', cartData);
+        
+    }
+    else {
+        //not present
+        cartData = {
+            "id_1": {
+                "name": "LED",
+                "quantity": 2,
+                "rate": 20,
+                "price": 40
+            }
+        }
+
+        localStorage.setItem('cartData', cartData);
+        
+    }
+    
+    console.log("Event -> ", name);
+}
+
 const getData = async () => {
-    const res = await fetch('data.json')
+    const res = await fetch('./data/data.json')
     const data = await res.json()
 
     data.items.map((item, i) => {
-        console.log("item", item.name);
         var d = document.createElement('div');
         d.setAttribute("id", "id_" + (i + 1));
         d.innerHTML = cardText(item.name, item.image, item.price, item.discount)
-        console.log("item", d);
-
         document.getElementById("card-data").appendChild(d);
     })
 }
@@ -38,7 +63,7 @@ const cardText = (name, image, price, discount) => {
                 <p class="item-actual-price">$ ${price.actual}</p>
                 <p class="item-discount-price">$ ${price.display}</p>
             </div>
-            <button class="item-add-to-card">Add to cart</button>
+            <button class="item-add-to-card"  onclick=addToCart('name11') >Add to cart</button>
             </div>
         </div>
     </div>

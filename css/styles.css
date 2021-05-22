@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+* > p {
+  font-size: 10px;
+  color: black;
+}
+
 :root {
   --green: rgb(125, 206, 125);
   --gray: rgb(221, 221, 221);
@@ -23,12 +28,11 @@
 }
 
 .card {
-  margin-bottom: 30px;
   box-shadow: 0 0 2rem 0 rgb(136 152 170 / 15%);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 0.375rem;
-  width: 90%;
-  margin: 0 20px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  /* border-radius: 0.375rem; */
+  width: 93%;
+  margin: 10px 0px;
 }
 
 @media (min-width: 768px) {
@@ -37,3 +41,30 @@
     padding-right: 30px !important;
   }
 }
+
+/* Big Screens */
+@media (min-width: 1441px) { /* @content ;  */}  
+
+
+/* desktop */
+@media (max-width: 1440px) { /* @content ;  */}   
+
+
+/* laptop */
+@media (max-width: 1024px) { /* @content ;  */ }
+
+
+/* tablet */
+@media (max-width: 768px) { /* @content ;  */ }
+
+
+/* phablet */
+@media (max-width: 425px) and (min-width: 376px)  { /* @content ;  */ }
+
+
+/* mobileonly  */
+@media (max-width: 375px) and (min-width: 321px)  { /* @content ;  */ }
+
+
+@media (max-width: 320px) { /* @content ;  */ }
+
