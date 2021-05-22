@@ -41,6 +41,27 @@
     padding-right: 30px !important;
   }
 }
+.item-card {
+  border: 1px solid var(--gray);
+  height: fit-content;
+ }
+.row{
+  display: flex; 
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  
+  gap: 30px;
+  
+ }
+ .column{
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between;
+ }
+ .Line{
+  border: 1px solid rgb(216, 208, 208);
+ }
 
 /* Big Screens */
 @media (min-width: 1441px) { /* @content ;  */}  
