@@ -10,13 +10,21 @@
     <link rel="stylesheet" href="./css/card.css" />
     <link rel="stylesheet" href="./css/styles.css" />
 
+    <link rel="stylesheet" href="css/styleMobile.css" />
+    <link rel="stylesheet" href="css/mobile_nav.css" />
+    <link rel="stylesheet" href="css/mobile_card.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
     <script src="./scripts/require.js"></script>
     <script src="./scripts/script.js"></script>
   </head>
 
   <body>
     
-    <div class="container-fluid">
+    <div class="container-fluid desktop">
       <header class="nav">
         <p>All Items</p>
         <button class="nav-btn">Item to add in the cart</button>
@@ -84,6 +92,212 @@
         </section>
       </div>
     </div>
+
+
+
+
+
+    <!-- MOBILE CODE -->
+    <div class="container-fluid mobile">
+      <header class="nav__mobile">
+        <div class="brand-logo">
+          <img
+            src="https://www.freepnglogos.com/uploads/star-png/star-vector-png-transparent-image-pngpix-21.png"
+          />
+        </div>
+
+        <div class="nav-input-container__mobile">
+          <input class="input-field" type="text" placeholder="Search" />
+          <i class="fa fa-search icon"></i>
+        </div>
+
+        <div class="nav-cart__mobile">
+          <button class="nav-btn">
+            <i class="fa fa-shopping-cart"></i>
+          </button>
+        </div>
+      </header>
+
+      <section class="functions__mobile">
+        <button class="func-btn-sort" id="sort-modal-button">
+          <i class="fa fa-sort"></i>
+          Sort
+        </button>
+        <button class="func-btn-filter" id="filter-modal-button">
+          <i class="fa fa-filter"></i>
+          Filter
+        </button>
+      </section>
+
+      <section class="items">
+        <div class="card">
+          <div class="card-body__mobile">
+            <div class="card-img__mobile">
+              <img src="https://place-hold.it/200" alt="" />
+            </div>
+          </div>
+
+          <div class="card-footer__mobile">
+            <p class="item-name__mobile">name</p>
+            <div class="item-details">
+              <div class="item-price">
+                <p class="item-discount-price__mobile">$ 200</p>
+                <p class="item-actual-price__mobile">900</p>
+                <p class="item-actual-discount__mobile">67 % off</p>
+              </div>
+              <div class="item-add-to-card">
+                <button id="${name}" onclick="func(event)">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body__mobile">
+            <div class="card-img__mobile">
+              <img src="https://place-hold.it/200" alt="" />
+            </div>
+          </div>
+
+          <div class="card-footer__mobile">
+            <p class="item-name__mobile">name</p>
+            <div class="item-details">
+              <div class="item-price">
+                <p class="item-discount-price__mobile">$ 200</p>
+                <p class="item-actual-price__mobile">900</p>
+                <p class="item-actual-discount__mobile">67 % off</p>
+              </div>
+              <div class="item-add-to-card">
+                <button id="${name}" onclick="func(event)">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body__mobile">
+            <div class="card-img__mobile">
+              <img src="https://place-hold.it/200" alt="" />
+            </div>
+          </div>
+
+          <div class="card-footer__mobile">
+            <p class="item-name__mobile">name</p>
+            <div class="item-details">
+              <div class="item-price">
+                <p class="item-discount-price__mobile">$ 200</p>
+                <p class="item-actual-price__mobile">900</p>
+                <p class="item-actual-discount__mobile">67 % off</p>
+              </div>
+              <div class="item-add-to-card">
+                <button id="${name}" onclick="func(event)">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body__mobile">
+            <div class="card-img__mobile">
+              <img src="https://place-hold.it/200" alt="" />
+            </div>
+          </div>
+
+          <div class="card-footer__mobile">
+            <p class="item-name__mobile">name</p>
+            <div class="item-details">
+              <div class="item-price">
+                <p class="item-discount-price__mobile">$ 200</p>
+                <p class="item-actual-price__mobile">900</p>
+                <p class="item-actual-discount__mobile">67 % off</p>
+              </div>
+              <div class="item-add-to-card">
+                <button id="${name}" onclick="func(event)">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!--  Sort Modal -->
+
+    <article class="modal-container" id="sort-modal-container">
+      <section class="modal-section" id="sort-modal-section">
+        <h3 class="modal-title">Sort Options</h3>
+        <p class="modal-content">Hi, I am Sorting Modal!</p>
+
+        <form>
+          <input type="radio" id="highlow" name="sorting" value="highlow" />
+          <label for="highlow">Price -- High Low</label><br />
+          <input type="radio" id="lowhigh" name="sorting" value="lowhigh" />
+          <label for="lowhigh">Price -- Low High</label><br />
+          <input type="radio" id="discount" name="sorting" value="discount" />
+          <label for="discount">Discount</label>
+        </form>
+        <br />
+
+        <div class="functions__mobile">
+          <button class="func-btn-sort">Apply</button>
+          <button class="func-btn-filter" id="sort-modal-close">Cancel</button>
+        </div>
+      </section>
+    </article>
+
+    <!-- Filter Modal -->
+
+    <article class="modal-container" id="filter-modal-container">
+      <section class="modal-section" id="filter-modal-section">
+        <h3 class="modal-title">Filter Options</h3>
+        <br />
+
+        <div slider id="slider-distance">
+          <div>
+            <div inverse-left style="width: 70%"></div>
+            <div inverse-right style="width: 70%"></div>
+            <div range style="left: 0%; right: 0%"></div>
+            <span thumb style="left: 0%"></span>
+            <span thumb style="left: 100%"></span>
+            <div sign style="left: 0%">
+              <span id="value">0</span>
+            </div>
+            <div sign style="left: 100%">
+              <span id="value">100</span>
+            </div>
+          </div>
+
+          <input
+            type="range"
+            value="0"
+            max="100"
+            min="0"
+            step="1"
+            id="minRange"
+            oninput="getMinRange(event)"
+          />
+
+          <input
+            type="range"
+            value="100"
+            max="100"
+            min="0"
+            step="1"
+            id="maxRange"
+            oninput="getMaxRange(event)"
+          />
+        </div>
+        <br />
+
+        <div class="functions__mobile">
+          <button class="func-btn-sort">Apply</button>
+          <button class="func-btn-filter" id="filter-modal-close">
+            Cancel
+          </button>
+        </div>
+      </section>
+    </article>
+
+    <script type="text/javascript" src="scripts/index.js"></script>
     
   </body>
 </html>
