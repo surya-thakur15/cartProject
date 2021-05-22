@@ -22,14 +22,14 @@
     margin-left: auto;
   }
   
-  .items {
+  .items__mobile {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
   
-  .card {
+  .card__mobile {
     background-color: var(--secondary);
     border: 1px solid rgba(0, 0, 0, 0.05);
     padding: 10px 0;

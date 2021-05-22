@@ -16,7 +16,7 @@
   padding: 12px;
 }
 
-.item-details {
+.item-details__mobile {
   font-weight: bold;
 }
 
@@ -24,7 +24,7 @@
   text-align: center;
 }
 
-.item-price {
+.item-price__mobile {
   display: flex;
   justify-content: space-between;
   padding: 12px 0;
@@ -40,11 +40,11 @@
   color: var(--success);
 }
 
-.item-add-to-card {
+.item-add-to-card__mobile {
   text-align: center;
 }
 
-.item-add-to-card > button {
+.item-add-to-card__mobile > button {
   padding: 12px;
   border: none;
   border-radius: 1.5rem;
