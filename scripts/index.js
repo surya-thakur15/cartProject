@@ -236,6 +236,7 @@ function removeFilter() {
   }
   removeFilterIcon.style.display = "none";
 }
+
 const addMobileDataToCart = (name, actualPrice, id, type, discountedPrice) => {
   var mobileCartData = [];
   let totalCartQuantity = 0;
@@ -351,7 +352,7 @@ const cardMobileText = (i, name, image, price, discount) => {
     "</div>" +
     '<div class="card-footer__mobile">' +
     '<p class="item-name__mobile">' +
-    name +
+    name.replaceAll('"', '') +
     "</p>" +
     '<div class="item-details__mobile">' +
     '<div class="item-price__mobile">' +

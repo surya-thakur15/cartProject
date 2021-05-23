@@ -4,7 +4,8 @@ const addToCart = (name, actualPrice, id, type,discountedPrice) => {
   notificationButton.style.display = "block";
   setTimeout(() => {
     notificationButton.style.display = "none";
-  }, 2000)
+  }, 3000)
+
 
   var cartData = []
   if (localStorage.getItem('cartData')) {
@@ -112,7 +113,7 @@ const totalBill = () => {
   let totalO = document.getElementById("order-total");
   totalQ.innerHTML = totalQuantity;
   totalA.innerHTML = totalSum;
-  totalD.innerHTML = "-"+totalDiscount;
+  totalD.innerHTML = totalDiscount ? "-" + totalDiscount : totalDiscount;
   totalO.innerHTML = discountedPrice;
   console.log("total sum & quantity", totalSum, " - ", totalDiscount, "..", discountedPrice);
 
@@ -130,6 +131,7 @@ const getData = async () => {
   table();
   totalBill();
 }
+
 
 const table = () => {
   var data = JSON.parse(localStorage.getItem('cartData'));
@@ -181,7 +183,7 @@ const cardText = (i, name, image, price, discount) => {
   return (
     '<div class="card"><div class="card-body"><div class="d-flex my-2"><p class="item-offer">' + discount + '% Off</p>' +
     '<div class="item-img"><img src="https://place-hold.it/200" alt="" height="150px" width="150px"/></div></div></div>' +
-    '<div class="card-footer"><p class="item-name">' + name + '</p><div class="item-details"><div class="item-price">' +
+    '<div class="card-footer"><p class="item-name">' + name.replaceAll('"', '') + '</p><div class="item-details"><div class="item-price">' +
     '<p class="item-actual-price">$' + price.display + '</p><p class="item-discount-price">$' +  price.actual+ '</p></div>' +
     '<button class="item-add-to-card" onclick=\'addToCart(' + name + ',' +price_display  + ',' + id + ',' + '1' +','+price_actual+ ') \'>' + 'Add to cart' + '</button>' +
     ' </div>' +
