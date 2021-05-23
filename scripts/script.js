@@ -75,6 +75,24 @@ const addToCart = (name, actualPrice, id, type) => {
     localStorage.setItem('cartData', JSON.stringify(cartData));
   }
   table();
+  totalBill();
+}
+
+const totalBill = () => {
+  let totalData = JSON.parse(localStorage.getItem('cartData'));
+  let totalSum = 0;
+  let totalQuantity = 0;
+  totalData.map(item => {
+    totalQuantity = totalQuantity + Number(item.quantity);
+    totalSum = totalSum + Number(item.totalAmount);
+  })
+
+  let totalQ = document.getElementById("order-total-quantity");
+  totalQ.innerHTML = totalQuantity;
+  let totalA = document.getElementById("order-total-amount");
+  totalA.innerHTML = totalSum;
+  console.log("total sum & quantity", totalSum, " - ", totalQuantity);  
+
 }
 
 const getData = async () => {
@@ -96,7 +114,7 @@ const table = () => {
     list.removeChild(list.firstChild);
   }
 
-  if (data.length > 0) {
+  if (data && data.length > 0) {
     data.map((item, i) => {
       var d = document.createElement('div');
       var d1 = document.createElement('div');
