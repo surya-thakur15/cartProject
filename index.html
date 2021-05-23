@@ -106,7 +106,7 @@
           <i class="fa fa-sort"></i>
           Sort
         </button>
-        <button class="func-btn-filter" id="filter-modal-button">
+        <button class="func-btn-filter" id="filter-modal-button" >
           <i class="fa fa-filter"></i>
           Filter
         </button>
@@ -133,7 +133,7 @@
         <br />
 
         <div class="functions__mobile">
-          <button class="func-btn-sort">Apply</button>
+          <button class="func-btn-sort" >Apply</button>
           <button class="func-btn-filter" id="sort-modal-close">Cancel</button>
         </div>
       </section>
@@ -154,18 +154,18 @@
             <span thumb style="left: 0%"></span>
             <span thumb style="left: 100%"></span>
             <div sign style="left: 0%">
-              <span id="value">0</span>
+              <span id="value">9999</span>
             </div>
             <div sign style="left: 100%">
-              <span id="value">100</span>
+              <span id="value">200000</span>
             </div>
           </div>
 
           <input
             type="range"
-            value="0"
-            max="100"
-            min="0"
+            value="9999"
+            max="200000"
+            min="9999"
             step="1"
             id="minRange"
             oninput="getMinRange(event)"
@@ -173,9 +173,9 @@
 
           <input
             type="range"
-            value="100"
-            max="100"
-            min="0"
+            value="200000"
+            max="200000"
+            min="9999"
             step="1"
             id="maxRange"
             oninput="getMaxRange(event)"
@@ -184,7 +184,7 @@
         <br />
 
         <div class="functions__mobile">
-          <button class="func-btn-sort">Apply</button>
+          <button class="func-btn-sort" onclick="filterApply()">Apply</button>
           <button class="func-btn-filter" id="filter-modal-close">
             Cancel
           </button>

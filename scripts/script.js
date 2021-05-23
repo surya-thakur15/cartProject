@@ -106,7 +106,7 @@ const totalBill = () => {
   let totalO = document.getElementById("order-total");
   totalQ.innerHTML = totalQuantity;
   totalA.innerHTML = totalSum;
-  totalD.innerHTML = totalDiscount;
+  totalD.innerHTML = "-"+totalDiscount;
   totalO.innerHTML = discountedPrice;
   console.log("total sum & quantity", totalSum, " - ", totalDiscount, "..", discountedPrice);
 
@@ -173,7 +173,6 @@ const cardText = (i, name, image, price, discount) => {
   var price_actual = JSON.stringify(price.actual)
   var price_display = JSON.stringify(price.display)
   return (
-
     '<div class="card"><div class="card-body"><div class="d-flex my-2"><p class="item-offer">' + discount + '% Off</p>' +
     '<div class="item-img"><img src="https://place-hold.it/200" alt="" height="150px" width="150px"/></div></div></div>' +
     '<div class="card-footer"><p class="item-name">' + name + '</p><div class="item-details"><div class="item-price">' +
