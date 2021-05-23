@@ -1,5 +1,5 @@
 
-const addToCart = (name, actualPrice, id, type) => {
+const addToCart = (name, actualPrice, id, type,discountedPrice) => {
   var cartData = []
   if (localStorage.getItem('cartData')) {
     cartData = JSON.parse(localStorage.getItem('cartData'));
@@ -36,10 +36,12 @@ const addToCart = (name, actualPrice, id, type) => {
 
       if (ind == -1) {
         temp.totalAmount = temp.quantity * temp.rate;
+        
         cartData.map((item) => {
           if (item.id === temp.id) {
             item.quantity = temp.quantity
             item.totalAmount = temp.totalAmount
+            
           }
         })
       }
@@ -56,7 +58,8 @@ const addToCart = (name, actualPrice, id, type) => {
         'name': name,
         'quantity': 1,
         'rate': actualPrice,
-        'totalAmount': actualPrice
+        'totalAmount': actualPrice,
+        'discountedPrice': discountedPrice
       }
       cartData.push(obj)
     }
@@ -69,29 +72,45 @@ const addToCart = (name, actualPrice, id, type) => {
       'name': name,
       'quantity': 1,
       'rate': actualPrice,
-      'totalAmount': actualPrice
+      'totalAmount': actualPrice,
+      'discountedPrice': discountedPrice
     }
     cartData.push(obj)
     localStorage.setItem('cartData', JSON.stringify(cartData));
   }
   table();
   totalBill();
+  
 }
 
 const totalBill = () => {
   let totalData = JSON.parse(localStorage.getItem('cartData'));
   let totalSum = 0;
   let totalQuantity = 0;
+  let totalDiscount =0;
+  let discountedPrice =0;
+  let totalOrder =0;
   totalData.map(item => {
     totalQuantity = totalQuantity + Number(item.quantity);
     totalSum = totalSum + Number(item.totalAmount);
+    discountedPrice = discountedPrice + Number(item.discountedPrice);
+    
   })
+  totalDiscount = totalSum-discountedPrice
+
+  // totalOrder = totalOrder + Number(totalSum-discountedPrice);
+  // totalOrder = totalSum-totalDiscount
+  // console.log("totalOrder",totalOrder)
 
   let totalQ = document.getElementById("order-total-quantity");
+  let totalD = document.getElementById("order-total-discount");
+  let totalO = document.getElementById("order-total");
   totalQ.innerHTML = totalQuantity;
   let totalA = document.getElementById("order-total-amount");
   totalA.innerHTML = totalSum;
-  console.log("total sum & quantity", totalSum, " - ", totalQuantity);  
+  totalD.innerHTML = totalDiscount;
+  totalO.innerHTML = discountedPrice;
+  console.log("total sum & quantity", totalSum, " - ", totalDiscount,"..",totalOrder);
 
 }
 
@@ -105,6 +124,7 @@ const getData = async () => {
     document.getElementById("card-data").appendChild(d);
   })
   table();
+  totalBill();
 }
 
 const table = () => {
@@ -153,13 +173,14 @@ const cardText = (i, name, image, price, discount) => {
   var id = JSON.stringify(tempId);
   var name = JSON.stringify(name);
   var price_actual = JSON.stringify(price.actual)
+  var price_display = JSON.stringify(price.display)
   return (
 
     '<div class="card"><div class="card-body"><div class="d-flex my-2"><p class="item-offer">' + discount + '% Off</p>' +
     '<div class="item-img"><img src="https://place-hold.it/200" alt="" height="150px" width="150px"/></div></div></div>' +
     '<div class="card-footer"><p class="item-name">' + name + '</p><div class="item-details"><div class="item-price">' +
-    '<p class="item-actual-price">$' + price.actual + '</p><p class="item-discount-price">$' + price.display + '</p></div>' +
-    '<button class="item-add-to-card" onclick=\'addToCart(' + name + ',' + price_actual + ',' + id + ',' + '1' + ') \'>' + 'Add to cart' + '</button>' +
+    '<p class="item-actual-price">$' + price.display + '</p><p class="item-discount-price">$' +  price.actual+ '</p></div>' +
+    '<button class="item-add-to-card" onclick=\'addToCart(' + name + ',' +price_display  + ',' + id + ',' + '1' +','+price_actual+ ') \'>' + 'Add to cart' + '</button>' +
     ' </div>' +
     '</div>' +
     '</div>'
