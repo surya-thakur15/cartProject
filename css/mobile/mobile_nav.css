@@ -79,9 +79,10 @@
   font-size: 12px;
 }
 
-.nav-my-cart__mobile > i {
+.nav-my-cart__mobile > a > i {
   padding: 12px;
   font-size: 30px;
+  color: white;
 }
 
 .nav-num-of-items__mobile {

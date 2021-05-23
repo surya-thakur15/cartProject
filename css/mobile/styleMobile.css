@@ -7,6 +7,10 @@
   --dark-grey: #989898;
 }
 
+.mobile {
+  background-color: var(--secondary);
+}
+
 .items__mobile {
   max-width: 1200px;
   margin: 0 auto;
@@ -21,8 +25,17 @@
   padding: 10px 0;
 }
 
-.mobile {
-  background-color: var(--secondary);
+.item-details__mobile {
+  font-weight: bold;
+}
+
+.item-actual-price__mobile {
+  color: var(--dark-grey);
+  text-decoration: line-through var(--dark-grey) 2px;
+}
+
+.item-actual-discount__mobile {
+  color: var(--success);
 }
 
 @media (min-width: 769px) {
@@ -38,7 +51,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 375px) {
   .nav-input-container__mobile > input {
     width: 40vw !important;
   }
