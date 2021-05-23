@@ -1,0 +1,40 @@
+.cart-items__mobile {
+  display: grid;
+  grid-gap: 1rem;
+  padding-top: 78px;
+  border-top: 1px solid var(--gray);
+}
+
+.cart-card__mobile {
+  background-color: var(--white);
+  display: flex;
+}
+
+.cart-card-body__mobile {
+  padding: 12px 24px;
+  width: 70%;
+  /* border: 1px solid black; */
+}
+
+.cart-card-body__mobile > p {
+  overflow: hidden;
+}
+
+.item-price__mobile {
+  padding: 12px 0;
+  display: flex;
+}
+
+.item-actual-price__mobile {
+    
+}
+
+.card-img__mobile {
+  padding: 12px 24px;
+  text-align: center;
+}
+
+.card-img__mobile > img {
+  width: 50%;
+  height: auto;
+}

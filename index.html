@@ -10,54 +10,44 @@
     <link rel="stylesheet" href="./css/card.css" />
     <link rel="stylesheet" href="./css/styles.css" />
 
-    <link rel="stylesheet" href="css/styleMobile.css" />
-    <link rel="stylesheet" href="css/mobile_nav.css" />
-    <link rel="stylesheet" href="css/mobile_card.css" />
+    <link rel="stylesheet" href="./css/mobile/styleMobile.css" />
+    <link rel="stylesheet" href="./css/mobile/mobile_nav.css" />
+    <link rel="stylesheet" href="./css/mobile/mobile_card.css" />
+    <link rel="stylesheet" href="./css/mobile/mobile_modal.css" />
 
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
     <script src="./scripts/require.js"></script>
     <script src="./scripts/script.js"></script>
   </head>
 
   <body>
-    
     <div class="container-fluid desktop">
       <header class="nav">
         <p>All Items</p>
         <button class="nav-btn">Item to add in the cart</button>
       </header>
-      
+
       <div class="body">
-        
         <section class="items" id="card-data"></section>
 
         <section class="billing-items">
-          <div class="column" >
-
+          <div class="column">
             <div>
               <div class="Line"></div>
-              <div class="row" style="margin-bottom: 10px;">
+              <div class="row" style="margin-bottom: 10px">
                 <div>Items4</div>
                 <div>Qty</div>
                 <div>Price</div>
               </div>
               <div class="Line"></div>
-              <!-- </header> -->
-              <div class="column" id="item_data" style="margin-top: 10px;">
-              </div>
-              <!-- <div class="row" style="margin-top: 10px;">
-                <div class="item-card">Items2 x</div>
-                <div class="item-card">- 1</div>
-                <div class="item-card">$20</div>
-              </div> -->
-              
+              <div class="column" id="item_data" style="margin-top: 10px"></div>
               <div class="Line"></div>
-        
             </div>
-            <div class="item-card" style="margin-top: 10px;">
+            <div class="item-card" style="margin-top: 10px">
               <div class="column">
                 <div><b>Total</b></div>
                 <div class="row">
@@ -85,14 +75,9 @@
               </div>
             </div>
           </div>
-        
         </section>
       </div>
     </div>
-
-
-
-
 
     <!-- MOBILE CODE -->
     <div class="container-fluid mobile">
@@ -115,7 +100,7 @@
         </div>
       </header>
 
-      <section class="functions__mobile">
+      <section class="functions__mobile fnc-fixed">
         <button class="func-btn-sort" id="sort-modal-button">
           <i class="fa fa-sort"></i>
           Sort
@@ -233,7 +218,6 @@
             </div>
           </div>
         </div>
-
       </section>
     </div>
 
@@ -315,6 +299,5 @@
     </article>
 
     <script type="text/javascript" src="scripts/index.js"></script>
-    
   </body>
 </html>
