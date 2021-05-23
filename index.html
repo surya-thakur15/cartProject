@@ -22,6 +22,7 @@
 
     <script src="./scripts/require.js"></script>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/mobile_script.js"></script>
   </head>
 
   <body>
@@ -51,7 +52,7 @@
               <div class="column">
                 <div><b>Total</b></div>
                 <div class="row">
-                  <div>Items( <span id="order-total-quantity"> </span> ) </div>
+                  <div>Items( <span id="order-total-quantity"> </span> )</div>
                   <div>:</div>
                   <div id="order-total-amount"></div>
                 </div>
@@ -94,9 +95,9 @@
         </div>
 
         <div class="nav-cart__mobile">
-          <button class="nav-btn">
+          <a class="nav-btn" href="cart.html">
             <i class="fa fa-shopping-cart"></i>
-          </button>
+          </a>
         </div>
       </header>
 
@@ -111,114 +112,7 @@
         </button>
       </section>
 
-      <section class="items__mobile">
-        <div class="card__mobile">
-          <div class="card-body__mobile">
-            <div class="card-img__mobile">
-              <img src="https://place-hold.it/200" alt="" />
-            </div>
-          </div>
-
-          <div class="card-footer__mobile">
-            <p class="item-name__mobile">name</p>
-            <div class="item-details__mobile">
-              <div class="item-price__mobile">
-                <p class="item-discount-price__mobile">$ 200</p>
-                <p class="item-actual-price__mobile">900</p>
-                <p class="item-actual-discount__mobile">67 % off</p>
-              </div>
-              <div class="item-add-to-card__mobile">
-                <button id="${name}" onclick="func(event)">Add to cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card__mobile">
-          <div class="card-body__mobile">
-            <div class="card-img__mobile">
-              <img src="https://place-hold.it/200" alt="" />
-            </div>
-          </div>
-
-          <div class="card-footer__mobile">
-            <p class="item-name__mobile">name</p>
-            <div class="item-details__mobile">
-              <div class="item-price__mobile">
-                <p class="item-discount-price__mobile">$ 200</p>
-                <p class="item-actual-price__mobile">900</p>
-                <p class="item-actual-discount__mobile">67 % off</p>
-              </div>
-              <div class="item-add-to-card__mobile">
-                <button id="${name}" onclick="func(event)">Add to cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card__mobile">
-          <div class="card-body__mobile">
-            <div class="card-img__mobile">
-              <img src="https://place-hold.it/200" alt="" />
-            </div>
-          </div>
-
-          <div class="card-footer__mobile">
-            <p class="item-name__mobile">name</p>
-            <div class="item-details__mobile">
-              <div class="item-price__mobile">
-                <p class="item-discount-price__mobile">$ 200</p>
-                <p class="item-actual-price__mobile">900</p>
-                <p class="item-actual-discount__mobile">67 % off</p>
-              </div>
-              <div class="item-add-to-card__mobile">
-                <button id="${name}" onclick="func(event)">Add to cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card__mobile">
-          <div class="card-body__mobile">
-            <div class="card-img__mobile">
-              <img src="https://place-hold.it/200" alt="" />
-            </div>
-          </div>
-
-          <div class="card-footer__mobile">
-            <p class="item-name__mobile">name</p>
-            <div class="item-details__mobile">
-              <div class="item-price__mobile">
-                <p class="item-discount-price__mobile">$ 200</p>
-                <p class="item-actual-price__mobile">900</p>
-                <p class="item-actual-discount__mobile">67 % off</p>
-              </div>
-              <div class="item-add-to-card__mobile">
-                <button id="${name}" onclick="func(event)">Add to cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card__mobile">
-          <div class="card-body__mobile">
-            <div class="card-img__mobile">
-              <img src="https://place-hold.it/200" alt="" />
-            </div>
-          </div>
-
-          <div class="card-footer__mobile">
-            <p class="item-name__mobile">name</p>
-            <div class="item-details__mobile">
-              <div class="item-price__mobile">
-                <p class="item-discount-price__mobile">$ 200</p>
-                <p class="item-actual-price__mobile">900</p>
-                <p class="item-actual-discount__mobile">67 % off</p>
-              </div>
-              <div class="item-add-to-card__mobile">
-                <button id="${name}" onclick="func(event)">Add to cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section class="items__mobile" id="card-data__mobile"></section>
     </div>
 
     <!--  Sort Modal -->

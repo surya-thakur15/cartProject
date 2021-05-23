@@ -18,10 +18,8 @@
 .nav-input-container__mobile {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 5px;
-}
-
-.nav-input-container__mobile {
   border-bottom: 2px solid white;
 }
 
@@ -30,6 +28,7 @@
   background-color: var(--primary);
   color: white;
   width: 60vw;
+  padding: 12px;
 }
 
 .nav-input-container__mobile > input::placeholder {
@@ -45,7 +44,7 @@
   font-weight: 600;
 }
 
-.nav-cart__mobile > button {
+.nav-cart__mobile > a {
   background-color: var(--primary);
   border: none;
   color: var(--white);
@@ -59,7 +58,7 @@
 
 .fnc-fixed {
   position: fixed;
-  top: 78px;
+  top: 75px;
   width: 100%;
 }
 
