@@ -89,28 +89,26 @@ const totalBill = () => {
   let totalQuantity = 0;
   let totalDiscount =0;
   let discountedPrice =0;
-  let totalOrder =0;
-  totalData.map(item => {
-    totalQuantity = totalQuantity + Number(item.quantity);
-    totalSum = totalSum + Number(item.totalAmount);
-    discountedPrice = discountedPrice + Number(item.discountedPrice);
-    
-  })
-  totalDiscount = totalSum-discountedPrice
+  if (totalData && totalData.length > 0) {
+    totalData.map(item => {
+      totalQuantity = totalQuantity + Number(item.quantity);
+      totalSum = totalSum + Number(item.totalAmount);
+      discountedPrice = discountedPrice + Number(item.discountedPrice) * item.quantity;
 
-  // totalOrder = totalOrder + Number(totalSum-discountedPrice);
-  // totalOrder = totalSum-totalDiscount
-  // console.log("totalOrder",totalOrder)
+    })
+  }
+  console.log("discountedPrice", discountedPrice);
+  totalDiscount = totalSum - discountedPrice;
 
   let totalQ = document.getElementById("order-total-quantity");
   let totalD = document.getElementById("order-total-discount");
+  let totalA = document.getElementById("order-total-amount");
   let totalO = document.getElementById("order-total");
   totalQ.innerHTML = totalQuantity;
-  let totalA = document.getElementById("order-total-amount");
   totalA.innerHTML = totalSum;
   totalD.innerHTML = totalDiscount;
   totalO.innerHTML = discountedPrice;
-  console.log("total sum & quantity", totalSum, " - ", totalDiscount,"..",totalOrder);
+  console.log("total sum & quantity", totalSum, " - ", totalDiscount, "..", discountedPrice);
 
 }
 
