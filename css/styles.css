@@ -34,25 +34,35 @@
   margin: 10px 0px;
 }
 
-.item-card {
-  border: 1px solid var(--gray);
-  height: fit-content;
-}
 .row {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  flex-wrap: wrap;
+}
 
-  gap: 30px;
+.billing-item-header {
+  border-top: 2px solid var(--dark-grey);
+  padding: 8px 0;
 }
-.column {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+
+.billing-item-list {
+  border-top: 1px solid var(--dark-grey);
+  border-bottom: 1px solid var(--dark-grey);
+  padding: 8px 0;
 }
-.Line {
-  border: 1px solid rgb(216, 208, 208);
+
+.billing-item-footer {
+  margin-top: 20px;
+  border: 3px solid var(--gray);
+  height: fit-content;
+  color: var(--dark-grey);
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.p-2-6 {
+  padding: 3px 10px;
 }
 
 /* Big Screens */

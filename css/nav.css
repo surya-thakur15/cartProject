@@ -1,11 +1,16 @@
 .nav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   border-top: 1px solid var(--gray);
   border-bottom: 1px solid var(--gray);
   padding: 10px;
   width: 100%;
+}
+
+#nav-notification {
+  width: 90%;
+  text-align: center;
+  display: none;
 }
 
 .nav-btn {
