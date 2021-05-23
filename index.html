@@ -29,51 +29,57 @@
     <div class="container-fluid desktop">
       <header class="nav">
         <p>All Items</p>
-        <button class="nav-btn">Item to add in the cart</button>
+        <div id="nav-notification">
+          <button class="nav-btn">Item added to the cart</button>
+        </div>
       </header>
 
       <div class="body">
         <section class="items" id="card-data"></section>
 
         <section class="billing-items">
-          <div class="column">
-            <div>
-              <div class="Line"></div>
-              <div class="row" style="margin-bottom: 10px">
-                <div>Items4</div>
-                <div>Qty</div>
-                <div>Price($)</div>
+          <div class="row billing-item-header">
+            <div>Items [4]</div>
+            <div>Qty</div>
+            <div>Price($)</div>
+          </div>
+
+          <div class="billing-item-list" id="item_data"></div>
+
+          <div class="billing-item-footer">
+            <h4 class="p-2-6">Total</h4>
+            <div class="row p-2-6">
+              <div class="row w-50">
+                <div class="row">
+                  <p>Items</p>
+                  (<span id="order-total-quantity"> </span>)
+                </div>
+                <p>:</p>
               </div>
-              <div class="Line"></div>
-              <div class="column" id="item_data" style="margin-top: 10px"></div>
-              <div class="Line"></div>
+              <p class="f-right" id="order-total-amount"></p>
             </div>
-            <div class="item-card" style="margin-top: 10px">
-              <div class="column">
-                <div><b>Total</b></div>
-                <div class="row">
-                  <div>Items( <span id="order-total-quantity"> </span> )</div>
-                  <div>:</div>
-                  <div id="order-total-amount"></div>
-                </div>
-                <div class="row">
-                  <div>Discount</div>
-                  <div>:</div>
-                  <div id="order-total-discount"></div>
-                </div>
-                <div class="row">
-                  <div>Type Discount</div>
-                  <div>:</div>
-                  <div id="order-type-discount">0</div>
-                </div>
-                <div>
-                  <div class="row">
-                    <div>Order Total</div>
-                    <div>:</div>
-                    <div id="order-total"></div>
-                  </div>
-                </div>
+
+            <div class="row p-2-6">
+              <div class="row w-50">
+                <p>Discount</p>
+                <p>:</p>
               </div>
+              <p id="order-total-discount"></p>
+            </div>
+
+            <div class="row p-2-6">
+              <div class="row w-50">
+                <p>Type Discount</p>
+                <p>:</p>
+              </div>
+              <p id="order-type-discount">0</p>
+            </div>
+            <div class="row card-footer" style="margin-top: 7px">
+              <div class="row w-50">
+                <p>Order Total</p>
+                <p>:</p>
+              </div>
+              <b id="order-total"></b>
             </div>
           </div>
         </section>
@@ -114,7 +120,11 @@
           <i class="fa fa-filter"></i>
           Filter
         </button>
-        <div class="remove-applied-items" id="remove-applied-filter" onclick="removeFilter()">
+        <div
+          class="remove-applied-items"
+          id="remove-applied-filter"
+          onclick="removeFilter()"
+        >
           <p id="num-of-items">x</p>
         </div>
       </section>

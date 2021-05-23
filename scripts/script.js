@@ -1,5 +1,11 @@
 
 const addToCart = (name, actualPrice, id, type,discountedPrice) => {
+  const notificationButton = document.getElementById("nav-notification")
+  notificationButton.style.display = "block";
+  setTimeout(() => {
+    notificationButton.style.display = "none";
+  }, 2000)
+
   var cartData = []
   if (localStorage.getItem('cartData')) {
     cartData = JSON.parse(localStorage.getItem('cartData'));
