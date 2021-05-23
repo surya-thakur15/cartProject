@@ -3,21 +3,20 @@
   padding: 0;
 }
 
-* > p {
+/* * > p {
   font-size: 10px;
   color: black;
-}
+} */
 
 :root {
-  --green: rgb(125, 206, 125);
-  --gray: rgb(221, 221, 221);
-  --blue: rgb(69, 207, 231);
   --white: #fff;
+  --green: rgb(125, 206, 125);
+  --blue: rgb(69, 207, 231);
+  --gray: rgb(221, 221, 221);
 }
 
 .container-fluid {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 0;
   margin-right: auto;
   margin-left: auto;
 }
@@ -35,61 +34,66 @@
   margin: 10px 0px;
 }
 
-@media (min-width: 768px) {
+.item-card {
+  border: 1px solid var(--gray);
+  height: fit-content;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  gap: 30px;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.Line {
+  border: 1px solid rgb(216, 208, 208);
+}
+
+/* Big Screens */
+@media (min-width: 1441px) {
+  /* @content ;  */
+}
+
+/* desktop */
+@media (max-width: 1440px) {
+  /* @content ;  */
+}
+
+/* laptop */
+@media (max-width: 1024px) {
+  /* @content ;  */
+}
+
+/* tablet */
+@media (max-width: 769px) {
+  .desktop {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
   .container-fluid {
     padding-left: 30px !important;
     padding-right: 30px !important;
   }
 }
-.item-card {
-  border: 1px solid var(--gray);
-  height: fit-content;
- }
-.row{
-  display: flex; 
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  
-  gap: 30px;
-  
- }
- .column{
-  display: flex; 
-  flex-direction: column;
-  justify-content: space-between;
- }
- .Line{
-  border: 1px solid rgb(216, 208, 208);
- }
-
-/* Big Screens */
-@media (min-width: 1441px) { /* @content ;  */}  
-
-
-/* desktop */
-@media (max-width: 1440px) { /* @content ;  */}   
-
-
-/* laptop */
-@media (max-width: 1024px) { /* @content ;  */ }
-
-
-/* tablet */
-@media (max-width: 769px) { 
-  .desktop{
-    display: none;
-  }
- }
-
 
 /* phablet */
-@media (max-width: 425px) and (min-width: 376px)  { /* @content ;  */ }
-
+@media (max-width: 425px) and (min-width: 376px) {
+  /* @content ;  */
+}
 
 /* mobileonly  */
-@media (max-width: 375px) and (min-width: 321px)  { /* @content ;  */ }
+@media (max-width: 375px) and (min-width: 321px) {
+  /* @content ;  */
+}
 
-
-@media (max-width: 320px) { /* @content ;  */ }
-
+@media (max-width: 320px) {
+  /* @content ;  */
+}
