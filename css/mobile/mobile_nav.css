@@ -83,3 +83,21 @@
   padding: 12px;
   font-size: 30px;
 }
+
+.nav-num-of-items__mobile {
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  top: 0;
+  margin-top: 15px;
+  margin-right: 30px;
+  background-color: #d84315;
+  border-radius: 100%;
+  width: 17px;
+  height: 17px;
+  font-size: 14px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
