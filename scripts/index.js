@@ -1,6 +1,7 @@
 var tempData;
 var filterData = [];
 var sortData = [];
+var cartItemData;
 var removeFilterIcon = document.getElementById("remove-applied-filter");
 
 const getMobileData = async () => {
@@ -78,25 +79,25 @@ let modalSort = document.getElementById("sort-modal-container");
 let closeSortModalButton = document.getElementById("sort-modal-close");
 var minValue = 9999;
 var maxValue = 200000;
-openSortModalButton.onclick = function () {
-  modalSort.style.display = "block";
-};
+// openSortModalButton.onclick = function () {
+//   modalSort.style.display = "block";
+// };
 
-closeSortModalButton.onclick = function () {
-  modalSort.style.display = "none";
-};
+// closeSortModalButton.onclick = function () {
+//   modalSort.style.display = "none";
+// };
 
 let openFilterModalButton = document.getElementById("filter-modal-button");
 let modalFilter = document.getElementById("filter-modal-container");
 let closeFilterModalButton = document.getElementById("filter-modal-close");
 
-openFilterModalButton.onclick = function () {
-  modalFilter.style.display = "block";
-};
+// openFilterModalButton.onclick = function () {
+//   modalFilter.style.display = "block";
+// };
 
-closeFilterModalButton.onclick = function () {
-  modalFilter.style.display = "none";
-};
+// closeFilterModalButton.onclick = function () {
+//   modalFilter.style.display = "none";
+// };
 
 function getMinRange(event) {
   event.target.value = Math.min(
@@ -111,7 +112,6 @@ function getMinRange(event) {
   children[7].style.left = minValue + "%";
   children[11].style.left = minValue + "%";
   children[11].childNodes[1].innerHTML = event.target.value;
-  // localStorage.setItem("filterMinRange",minValue)
 }
 
 function getMaxRange(event) {
@@ -129,6 +129,75 @@ function getMaxRange(event) {
   children[13].childNodes[1].innerHTML = event.target.value;
   // localStorage.setItem("filterMaxRange",maxValue)
 }
+function showCartItem() {
+  console.log("here")
+  
+  cartItemData = JSON.parse(localStorage.getItem("mobileCartData"));
+  cartItemData.map((item, i) => {
+    var d1 = document.createElement('div');
+    d1.setAttribute("id", "id_" + (i + 1));
+    d1.innerHTML = cartDataMobile(item.id, item.name, item.image, item.quantity, item.discountedPrice, item.rate)
+    document.getElementById("card__mobile").appendChild(d1);
+    totalCartQuantity=JSON.parse(localStorage.getItem("totalCartQuantity"))
+    
+  })
+
+
+}
+const increaseQuantity = (id) => {
+  console.log("cartItemData", id)
+  
+  cartItemData.map((item) => {
+    if (item.id === id) {
+      item.quantity += 1
+    }
+    
+  })
+  localStorage.setItem('mobileCartData', JSON.stringify(cartItemData))
+  
+}
+const decreaseQuantity = (id) => {
+  console.log("cartItemData", id)
+  cartItemData.map((item) => {
+    if (item.id === id) {
+      item.quantity -= 1
+    }
+  })
+  localStorage.setItem('mobileCartData', JSON.stringify(cartItemData))
+
+  
+}
+const cartDataMobile = (index, name, image, quantity, discount, price) => {
+  var totalDiscount = quantity * discount;
+  var totalPrice = quantity * price;
+  var tempQuantity = quantity;
+  var id = JSON.stringify(index);
+  var tempName = JSON.stringify(name);
+  var price_actual = JSON.stringify(price.actual)
+  var price_display = JSON.stringify(price.display)
+  return (
+    ' <div class="cart-card__mobile">' +
+    '<div class="cart-card-body__mobile">' +
+    '<h2 class="item-name__mobile">' + name + '</h2>' +
+    '<div class="item-price__mobile">' +
+    ' <h3 class="item-discount-price__mobile">$' + totalDiscount + '</h3>' +
+    '<p class="item-actual-price__mobile">$' + totalPrice + '</p>' +
+    '</div>' +
+
+    '<div class="item-price__mobile">' +
+    '<button class="item-quan-btn__mobile" onclick=\'increaseQuantity(' + id + ') \'>' +
+    '+' + '</button>' +
+    '<p class="item-quantity__mobile" id="item-quantity__mobile">' + quantity + '</p>' +
+    '<button class="item-quan-btn__mobile"onclick=\'decreaseQuantity(' + id + ') \'>' + '-' + '</button>' +
+    '</div>' +
+    '</div>' +
+
+    '<div class="card-img__mobile">' +
+    '<img src="https://place-hold.it/200" alt="" />' +
+    '</div>' +
+    '</div>')
+}
+
 
 function filterApply() {
   removeSort();
@@ -159,7 +228,6 @@ function filterApply() {
 
   modalFilter.style.display = "none";
 }
-
 function removeFilter() {
   if (localStorage.getItem("filterData")) {
     filterData = [];
@@ -168,7 +236,6 @@ function removeFilter() {
   }
   removeFilterIcon.style.display = "none";
 }
-
 const addMobileDataToCart = (name, actualPrice, id, type, discountedPrice) => {
   var mobileCartData = [];
   let totalCartQuantity = 0;
@@ -382,3 +449,4 @@ function removeSort() {
 }
 
 getMobileData();
+showCartItem();
