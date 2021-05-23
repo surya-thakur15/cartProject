@@ -54,7 +54,7 @@
   margin-top: 20px;
   border: 3px solid var(--gray);
   height: fit-content;
-  color: var(--dark-grey);
+  color: black;
 }
 
 .w-50 {
@@ -63,6 +63,11 @@
 
 .p-2-6 {
   padding: 3px 10px;
+}
+
+
+.w-50 > p, b {
+  color: black;
 }
 
 /* Big Screens */

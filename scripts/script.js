@@ -4,7 +4,8 @@ const addToCart = (name, actualPrice, id, type,discountedPrice) => {
   notificationButton.style.display = "block";
   setTimeout(() => {
     notificationButton.style.display = "none";
-  }, 2000)
+  }, 3000)
+
 
   var cartData = []
   if (localStorage.getItem('cartData')) {
@@ -112,7 +113,7 @@ const totalBill = () => {
   let totalO = document.getElementById("order-total");
   totalQ.innerHTML = totalQuantity;
   totalA.innerHTML = totalSum;
-  totalD.innerHTML = "-"+totalDiscount;
+  totalD.innerHTML = totalDiscount ? "-" + totalDiscount : totalDiscount;
   totalO.innerHTML = discountedPrice;
   console.log("total sum & quantity", totalSum, " - ", totalDiscount, "..", discountedPrice);
 
