@@ -5,6 +5,9 @@
   align-items: center;
   padding: 12px;
   color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .brand-logo > img {
@@ -15,7 +18,6 @@
 .nav-input-container__mobile {
   display: flex;
   justify-content: space-between;
-  width: 60%;
   padding: 5px;
 }
 
@@ -27,6 +29,7 @@
   border: none;
   background-color: var(--primary);
   color: white;
+  width: 60vw;
 }
 
 .nav-input-container__mobile > input::placeholder {
@@ -47,11 +50,17 @@
   border: none;
   color: var(--white);
   font-size: 30px;
-  padding-right: 15px;
+  padding-right: 30px;
 }
 
 .functions__mobile {
   display: flex;
+}
+
+.fnc-fixed {
+  position: fixed;
+  top: 78px;
+  width: 100%;
 }
 
 .functions__mobile > button {
@@ -64,4 +73,14 @@
 
 .functions__mobile > button:hover {
   background-color: var(--secondary);
+}
+
+.nav-my-cart__mobile {
+  justify-content: start;
+  font-size: 12px;
+}
+
+.nav-my-cart__mobile > i {
+  padding: 12px;
+  font-size: 30px;
 }

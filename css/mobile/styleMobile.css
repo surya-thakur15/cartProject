@@ -1,0 +1,41 @@
+:root {
+  --primary: #2774f0;
+  --secondary: #f4f5f7;
+  --success: #28a745;
+
+  --gold: #ff9800;
+  --dark-grey: #989898;
+}
+
+.items__mobile {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-top: 119px;
+}
+
+.card__mobile {
+  background-color: var(--secondary);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 10px 0;
+}
+
+.mobile {
+  background-color: var(--secondary);
+}
+
+@media (min-width: 769px) {
+  .mobile {
+    display: none;
+  }
+  .modal-container {
+    display: none;
+  }
+}
+
+@media (max-width: 320px) {
+  .nav-input-container__mobile > input {
+    width: 40vw !important;
+  }
+}
