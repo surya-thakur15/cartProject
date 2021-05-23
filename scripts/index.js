@@ -1,5 +1,6 @@
-var tempData=[];
+var tempData;
 var filterData=[];
+var removeFilterIcon = document.getElementById("remove-applied-filter");
 const getMobileData = async () => {
     
   if(localStorage.getItem('filterData')){
@@ -15,8 +16,13 @@ const getMobileData = async () => {
       d.innerHTML = cardMobileText(i, item.name, item.image, item.price, item.discount)
       document.getElementById("card-data__mobile").appendChild(d);
   })
+  
   }
   else{
+    var list = document.getElementById("card-data__mobile");
+    while (list.firstChild) {
+    list.removeChild(list.firstChild);
+    }
     const res = await fetch('./data/data.json')
     const data = await res.json()
     tempData = data.items;
@@ -87,19 +93,34 @@ function filterApply(){
     //   document.getElementById('minRange').setAttribute('value',localStorage.getItem('filterMinRange'))
     // }
     
-    console.log("tempData",tempData)
-    tempData.map((item,i)=>{
-      console.log("item.price.display",item.price.display, typeof item.price.display)
-      if(i>0&&item.price.display>=minValue && item.price.display<=maxValue){
-        filterData.push(item)
-      }
-    })
-   
-    console.log("filterData",filterData)
-    localStorage.setItem('filterData',JSON.stringify(filterData))
-    console.log("maxValue",maxValue,"minValue",minValue)
+    
+    if(!localStorage.getItem('filterData')){
+      tempData.map((item,i)=>{
+        console.log("item.price.display",item.price.display, typeof item.price.display)
+        if(i>0&&item.price.display>=minValue && item.price.display<=maxValue){
+          filterData.push(item)
+        }
+      })
+      localStorage.setItem('filterData',JSON.stringify(filterData))
+      removeFilterIcon.style.display = "flex";
+      tempData=[];
+
+    }
+    console.log("tempData",tempData.length)
+    
+    
   getMobileData()
+  
   modalFilter.style.display = "none";
+  
+}
+function removeFilter(){
+  if(localStorage.getItem("filterData")){
+    
+    localStorage.removeItem("filterData")
+    getMobileData()
+  }
+  removeFilterIcon.style.display = "none";
 
 }
 
