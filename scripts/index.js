@@ -88,10 +88,12 @@ const getMobileData = async () => {
   else {
     // data fetch from json and populate this.
     var list = document.getElementById("card-data__mobile");
-    while (list.firstChild) {
-      list.removeChild(list.firstChild);
+    if (list && list.firstChild) {
+      while (list.firstChild) {
+        list.removeChild(list.firstChild);
+      }
     }
-
+    
     const res = await fetch("./data/data.json");
     const data = await res.json();
     tempData = data.items;
@@ -105,14 +107,20 @@ const getMobileData = async () => {
         item.price,
         item.discount
       );
-      document.getElementById("card-data__mobile").appendChild(d);
+      let temp = document.getElementById("card-data__mobile")
+      if(temp){
+        temp.appendChild(d);
+      }
     });
   }
   // update the total items in cart
   let cartNumber = document.getElementById("num-of-items");
-  cartNumber.innerHTML = localStorage.getItem("totalCartQuantity")
-    ? localStorage.getItem("totalCartQuantity")
-    : 0;
+  if (cartNumber) {
+    cartNumber.innerHTML = localStorage.getItem("totalCartQuantity")
+      ? localStorage.getItem("totalCartQuantity")
+      : 0;
+  }
+ 
 };
 
 // function to get min range value from the range slider.
@@ -152,15 +160,24 @@ function showCartItem() {
 
   // card__mobile
   var list = document.getElementById("card__mobile");
-  while (list.firstChild) {
-    list.removeChild(list.firstChild);
+
+  if (list && list.firstChild) {
+    console.log("here");
+    while (list.firstChild) {
+      list.removeChild(list.firstChild);
+    }
   }
+  
   if (cartItemData && cartItemData.length > 0) {
     cartItemData.map((item, i) => {
       var d1 = document.createElement('div');
       d1.setAttribute("id", "id_" + (i + 1));
       d1.innerHTML = cartDataMobile(item.id, item.name, item.image, item.quantity, item.discountedPrice, item.rate)
-      document.getElementById("card__mobile").appendChild(d1);
+      let temp = document.getElementById("card__mobile");
+      if (temp) {
+        temp.appendChild(d1);
+      }
+
       totalCartQuantity=JSON.parse(localStorage.getItem("totalCartQuantity"))
       
     })
