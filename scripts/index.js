@@ -1,6 +1,6 @@
 var tempData;
 var filterData = [];
-var result=[];
+var result = [];
 var sortData = [];
 var mobileCartData = [];
 var cartItemData;
@@ -14,6 +14,10 @@ let openFilterModalButton = document.getElementById("filter-modal-button");
 let modalFilter = document.getElementById("filter-modal-container");
 let closeFilterModalButton = document.getElementById("filter-modal-close");
 var removeFilterIcon = document.getElementById("remove-applied-filter");
+var getItemNumberInCart = document.getElementById("item-num-in-total__mobile")
+var totalPriceId = document.getElementById("item-total-price__mobile")
+var totalDiscountId = document.getElementById("item-discount__mobile")
+var totalAmountId = document.getElementById("item-total-amount__mobile")
 
 // utility functions to open and close the modal. 
 if (openSortModalButton) {
@@ -45,6 +49,7 @@ const getMobileData = async () => {
 
   if (localStorage.getItem("filterData")) {
     // if filter data in present in local, show it. 
+    removeFilterIcon.style.display = "flex";
     var list = document.getElementById("card-data__mobile");
     while (list.firstChild) {
       list.removeChild(list.firstChild);
@@ -63,7 +68,7 @@ const getMobileData = async () => {
       document.getElementById("card-data__mobile").appendChild(d);
     });
   }
-  else if(result&&result.length>0){
+  else if (result && result.length > 0) {
     var list = document.getElementById("card-data__mobile");
     while (list.firstChild) {
       list.removeChild(list.firstChild);
@@ -111,9 +116,9 @@ const getMobileData = async () => {
         list.removeChild(list.firstChild);
       }
     }
-    
+
     const res = await fetch("./data/data.json");
-     data = await res.json();
+    data = await res.json();
     tempData = data.items;
     data.items.map((item, i) => {
       var d = document.createElement("div");
@@ -126,7 +131,7 @@ const getMobileData = async () => {
         item.discount
       );
       let temp = document.getElementById("card-data__mobile")
-      if(temp){
+      if (temp) {
         temp.appendChild(d);
       }
     });
@@ -138,15 +143,16 @@ const getMobileData = async () => {
       ? localStorage.getItem("totalCartQuantity")
       : 0;
   }
- 
+
 };
-function search(event){
-  
+
+function search(event) {
+
   let value = event.target.value.toLowerCase();
   if(data.items!==undefined){
     result = data.items.filter((item) => {
       return item.name.toLowerCase().search(value) != -1;
-  });
+    });
   }
   
   getMobileData()
@@ -195,15 +201,21 @@ function getMaxRange(event) {
 // function to show the all items in cart on next page.
 function showCartItem() {
   cartItemData = JSON.parse(localStorage.getItem("mobileCartData"));
+  if (getItemNumberInCart)
+    getItemNumberInCart.innerHTML = localStorage.getItem("totalCartQuantity");
 
   // card__mobile
   var list = document.getElementById("card__mobile");
+  var priceSum = 0
+  var discountSum = 0
+  var amountSum = 0
+
   if (list && list.firstChild) {
     while (list.firstChild) {
       list.removeChild(list.firstChild);
     }
   }
-  
+
   if (cartItemData && cartItemData.length > 0) {
     cartItemData.map((item, i) => {
       var d1 = document.createElement('div');
@@ -215,10 +227,20 @@ function showCartItem() {
         temp.appendChild(d1);
       }
 
-      totalCartQuantity=JSON.parse(localStorage.getItem("totalCartQuantity"))
+      priceSum += item.rate * item.quantity
+      discountSum += (item.rate - item.discountedPrice) * item.quantity
+      amountSum += item.discountedPrice * item.quantity
+      totalCartQuantity = JSON.parse(localStorage.getItem("totalCartQuantity"))
       
     })
   }
+
+  if(totalPriceId && totalDiscountId && totalAmountId){
+    totalPriceId.innerHTML = priceSum;
+    totalDiscountId.innerHTML = discountSum;
+    totalAmountId.innerHTML = amountSum;
+  }
+
 }
 
 // function to return all the cards of cart.
@@ -305,7 +327,7 @@ const decreaseQuantity = (id) => {
 
 const addMobileDataToCart = (name, actualPrice, id, type, discountedPrice) => {
   mobileCartData = [];
-  
+
   let totalCartQuantity = 0;
   // cartNumber.innerHTML = localStorage.getItem("");
 
@@ -483,7 +505,7 @@ function filterApply() {
     });
     localStorage.setItem("filterData", JSON.stringify(filterData));
     removeFilterIcon.style.display = "flex";
-    
+
   }
 
   //need to update local storage data when user changes the range

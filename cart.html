@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Billing | Cart</title>
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
 
-    <meta name="description" content="Simple Cart Project">
-    <meta name="author" content="TeamSok">
+    <meta name="description" content="Simple Cart Project" />
+    <meta name="author" content="TeamSok" />
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/mobile/styleMobile.css" />
     <link rel="stylesheet" href="./css/mobile/mobile_nav.css" />
@@ -29,22 +29,33 @@
       </header>
 
       <section class="cart-items__mobile">
-        <div class="card__mobile" id="card__mobile">
-         
-        </div>
+        <div class="card__mobile" id="card__mobile"></div>
       </section>
 
       <section>
         <div class="cart-card__mobile">
           <div class="cart-card-body__mobile">
-            <h2 class="item-name__mobile" style="color: var(--dark-grey); padding-bottom: 10px;">Price Details</h2>
+            <h2
+              class="item-name__mobile"
+              style="color: var(--dark-grey); padding-bottom: 10px"
+            >
+              Price Details
+            </h2>
             <div class="item-price-details__mobile">
-              <p class="item-discount-price__mobile">Price (3 Items)</p>
-              <p class="item-discount-price__mobile">Rs 12,313</p>
+              <p class="item-discount-price__mobile">
+                Price (<span id="item-num-in-total__mobile"></span> Items)
+              </p>
+              <p
+                class="item-discount-price__mobile"
+                id="item-total-price__mobile"
+              ></p>
             </div>
             <div class="item-price-details__mobile">
               <p class="item-discount-price__mobile">Discount</p>
-              <p class="item-actual-discount__mobile">- Rs 1,265</p>
+              <p
+                class="item-actual-discount__mobile"
+                id="item-discount__mobile"
+              ></p>
             </div>
             <div class="item-price-details__mobile">
               <p class="item-discount-price__mobile">Delivery Charges</p>
@@ -52,7 +63,10 @@
             </div>
             <div class="item-price-details__mobile price-total__mobile">
               <h5 class="item-discount-price__mobile">Total Amount</h5>
-              <p class="item-actual-discount__mobile">67 % off</p>
+              <p
+                class="item-actual-discount__mobile"
+                id="item-total-amount__mobile"
+              ></p>
             </div>
           </div>
         </div>
