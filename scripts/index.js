@@ -143,18 +143,13 @@ const getMobileData = async () => {
 function search(event){
   
   let value = event.target.value.toLowerCase();
-  console.log("value",value)
-  console.log("temp",data)
   if(data.items!==undefined){
     result = data.items.filter((item) => {
-      // console.log("filter",item.name)
       return item.name.toLowerCase().search(value) != -1;
   });
   }
   
-getMobileData()
-console.log("result",result)
-
+  getMobileData()
 }
 
 // function to get min range value from the range slider.
@@ -203,9 +198,7 @@ function showCartItem() {
 
   // card__mobile
   var list = document.getElementById("card__mobile");
-
   if (list && list.firstChild) {
-    console.log("here");
     while (list.firstChild) {
       list.removeChild(list.firstChild);
     }
@@ -215,7 +208,8 @@ function showCartItem() {
     cartItemData.map((item, i) => {
       var d1 = document.createElement('div');
       d1.setAttribute("id", "id_" + (i + 1));
-      d1.innerHTML = cartDataMobile(item.id, item.name, item.image, item.quantity, item.discountedPrice, item.rate)
+      d1.innerHTML = cartDataMobile(item.id, item.name, item.image,
+        item.quantity, item.discountedPrice, item.rate)
       let temp = document.getElementById("card__mobile");
       if (temp) {
         temp.appendChild(d1);
@@ -254,7 +248,7 @@ const cartDataMobile = (index, name, image, quantity, discount, price) => {
     '</div>' +
 
     '<div class="card-img__mobile">' +
-    '<img src="https://place-hold.it/200" alt="" />' +
+    '<img src="https://place-hold.it/200" alt="" width="auto" height="auto" />' +
     '</div>' +
     '</div>')
 }
@@ -419,7 +413,7 @@ const cardMobileText = (i, name, image, price, discount) => {
     '<div class="card__mobile">' +
     '<div class="card-body__mobile">' +
     '<div class="card-img__mobile">' +
-    '<img src="https://place-hold.it/200" alt="" />' +
+    '<img src="https://place-hold.it/200" alt="" width="auto" height="auto" />' +
     "</div>" +
     "</div>" +
     '<div class="card-footer__mobile">' +
