@@ -141,17 +141,32 @@ const table = () => {
       var d = document.createElement('div');
       var d1 = document.createElement('div');
       var d2 = document.createElement('div');
-      var d3 = document.createElement('div');
-      var btn = document.createElement('BUTTON');
-      var btn2 = document.createElement('BUTTON');
+      var d3 = document.createElement('p');
+      var btn = document.createElement('button');
+      var btn2 = document.createElement('button');
+      var dnew = document.createElement('div')
 
       d.setAttribute("class", "row")
-      d1.innerHTML = item.name
-      d1.setAttribute("class", "item-card")
-      d2.innerHTML = item.quantity
-      d2.setAttribute("class", "item-card")
-      d3.innerHTML = item.totalAmount
-      d3.setAttribute("class", "item-card")
+      dnew.setAttribute("class", "inner-row")
+
+      // Image and Item name
+      d1.setAttribute("class", "bill-item")
+
+      var img = document.createElement("img")
+      img.setAttribute("src", "https://place-hold.it/200")
+      img.setAttribute("alt", "")
+
+      var p1 = document.createElement("p")
+      p1.innerHTML = item.name
+
+      d1.appendChild(img);
+      d1.appendChild(p1)
+
+      // Quantity and btns
+      d2.setAttribute("class", "bill-item")
+      var p2 = document.createElement("p")
+      p2.innerHTML = item.quantity
+
       btn.innerHTML = '+'
       btn2.innerHTML = '-'
       btn.onclick = function () {
@@ -160,10 +175,18 @@ const table = () => {
       btn2.onclick = function () {
         return addToCart(item.name, item.totalAmount, item.id, '0');
       };
-      d.appendChild(d1);
-      d.appendChild(btn);
-      d.appendChild(d2);
-      d.appendChild(btn2);
+
+      d2.appendChild(btn)
+      d2.appendChild(p2)
+      d2.appendChild(btn2)
+
+      dnew.appendChild(d1)
+      dnew.appendChild(d2)
+
+      // total amount
+      d3.innerHTML = item.totalAmount
+
+      d.appendChild(dnew);
       d.appendChild(d3);
       document.getElementById("item_data").appendChild(d);
     })

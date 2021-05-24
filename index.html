@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cart | Home</title>
-    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
 
     <link rel="stylesheet" href="./css/nav.css" />
     <link rel="stylesheet" href="./css/card.css" />
@@ -30,7 +30,7 @@
   <body>
     <div class="container-fluid desktop">
       <header class="nav">
-        <h1>All Items</h1>
+        <h1 style="font-size: 20px;">All Items</h1>
         <div id="nav-notification">
           <button class="nav-btn">Item added to the cart</button>
         </div>
@@ -40,10 +40,11 @@
         <section class="items" id="card-data"></section>
 
         <section class="billing-items">
-          
           <div class="row billing-item-header">
-            <div>Items [4]</div>
-            <div>Qty</div>
+            <div class="inner-row" style="width: 69%">
+              <p>Items</p>
+              <p>Qty</p>
+            </div>
             <div>Price($)</div>
           </div>
 
@@ -107,7 +108,7 @@
           <p id="num-of-items"></p>
         </div>
 
-        <div class="nav-cart__mobile"  >
+        <div class="nav-cart__mobile">
           <a class="nav-btn" href="cart.html">
             <i class="fa fa-shopping-cart"></i>
           </a>
