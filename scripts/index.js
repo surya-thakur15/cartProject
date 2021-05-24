@@ -125,6 +125,7 @@ const getMobileData = async () => {
 
 // function to get min range value from the range slider.
 function getMinRange(event) {
+  temp = event.target.value
   event.target.value = Math.min(
     event.target.value,
     event.target.parentNode.childNodes[5].value - 1
@@ -136,10 +137,15 @@ function getMinRange(event) {
   children[7].style.left = minValue + "%";
   children[11].style.left = minValue + "%";
   children[11].childNodes[1].innerHTML = event.target.value;
+
+  event.target.value = temp;
+  minValue = event.target.value;
+
 }
 
 // function to get max value from the range slider. 
 function getMaxRange(event) {
+  temp = event.target.value
   event.target.value = Math.max(
     event.target.value,
     event.target.parentNode.childNodes[3].value - -1
@@ -151,6 +157,9 @@ function getMaxRange(event) {
   children[9].style.left = maxValue + "%";
   children[13].style.left = maxValue + "%";
   children[13].childNodes[1].innerHTML = event.target.value;
+
+  event.target.value = temp;
+  maxValue = event.target.value;
   // localStorage.setItem("filterMaxRange",maxValue)
 }
 
