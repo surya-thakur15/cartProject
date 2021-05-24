@@ -104,7 +104,6 @@ const totalBill = () => {
 
     })
   }
-  console.log("discountedPrice", discountedPrice);
   totalDiscount = totalSum - discountedPrice;
 
   let totalQ = document.getElementById("order-total-quantity");
@@ -115,8 +114,6 @@ const totalBill = () => {
   totalA.innerHTML = totalSum;
   totalD.innerHTML = totalDiscount ? "-" + totalDiscount : totalDiscount;
   totalO.innerHTML = discountedPrice;
-  console.log("total sum & quantity", totalSum, " - ", totalDiscount, "..", discountedPrice);
-
 }
 
 const getData = async () => {
@@ -131,7 +128,6 @@ const getData = async () => {
   table();
   totalBill();
 }
-
 
 const table = () => {
   var data = JSON.parse(localStorage.getItem('cartData'));

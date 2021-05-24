@@ -1,11 +1,49 @@
 var tempData;
 var filterData = [];
 var sortData = [];
+var mobileCartData = [];
 var cartItemData;
+var minValue = 9999;
+var maxValue = 200000;
+
+let openSortModalButton = document.getElementById("sort-modal-button");
+let modalSort = document.getElementById("sort-modal-container");
+let closeSortModalButton = document.getElementById("sort-modal-close");
+let openFilterModalButton = document.getElementById("filter-modal-button");
+let modalFilter = document.getElementById("filter-modal-container");
+let closeFilterModalButton = document.getElementById("filter-modal-close");
 var removeFilterIcon = document.getElementById("remove-applied-filter");
 
+// utility functions to open and close the modal. 
+if (openSortModalButton) {
+  openSortModalButton.onclick = function () {
+    modalSort.style.display = "block";
+  };
+}
+
+if (closeSortModalButton) {
+  closeSortModalButton.onclick = function () {
+    modalSort.style.display = "none";
+  };
+}
+
+if (openFilterModalButton) {
+  openFilterModalButton.onclick = function () {
+    modalFilter.style.display = "block";
+  };
+}
+
+if (closeFilterModalButton) {
+  closeFilterModalButton.onclick = function () {
+    modalFilter.style.display = "none";
+  };
+}
+
+// funciton to show the data/cards on mobile screen
 const getMobileData = async () => {
+
   if (localStorage.getItem("filterData")) {
+    // if filter data in present in local, show it. 
     var list = document.getElementById("card-data__mobile");
     while (list.firstChild) {
       list.removeChild(list.firstChild);
@@ -24,7 +62,9 @@ const getMobileData = async () => {
       document.getElementById("card-data__mobile").appendChild(d);
     });
   }
-  else if(JSON.parse(localStorage.getItem("sortData"))){
+
+  else if (JSON.parse(localStorage.getItem("sortData"))) {
+    // if sorted data in present in the local, then show it.
     var list = document.getElementById("card-data__mobile");
     while (list.firstChild) {
       list.removeChild(list.firstChild);
@@ -45,7 +85,8 @@ const getMobileData = async () => {
     });
 
   }
-   else {
+  else {
+    // data fetch from json and populate this.
     var list = document.getElementById("card-data__mobile");
     while (list.firstChild) {
       list.removeChild(list.firstChild);
@@ -67,45 +108,20 @@ const getMobileData = async () => {
       document.getElementById("card-data__mobile").appendChild(d);
     });
   }
-
+  // update the total items in cart
   let cartNumber = document.getElementById("num-of-items");
   cartNumber.innerHTML = localStorage.getItem("totalCartQuantity")
     ? localStorage.getItem("totalCartQuantity")
     : 0;
 };
-let openSortModalButton = document.getElementById("sort-modal-button");
 
-let modalSort = document.getElementById("sort-modal-container");
-let closeSortModalButton = document.getElementById("sort-modal-close");
-var minValue = 9999;
-var maxValue = 200000;
-// openSortModalButton.onclick = function () {
-//   modalSort.style.display = "block";
-// };
-
-// closeSortModalButton.onclick = function () {
-//   modalSort.style.display = "none";
-// };
-
-let openFilterModalButton = document.getElementById("filter-modal-button");
-let modalFilter = document.getElementById("filter-modal-container");
-let closeFilterModalButton = document.getElementById("filter-modal-close");
-
-// openFilterModalButton.onclick = function () {
-//   modalFilter.style.display = "block";
-// };
-
-// closeFilterModalButton.onclick = function () {
-//   modalFilter.style.display = "none";
-// };
-
+// function to get min range value from the range slider.
 function getMinRange(event) {
   event.target.value = Math.min(
     event.target.value,
     event.target.parentNode.childNodes[5].value - 1
   );
   minValue = (event.target.value / parseInt(event.target.max)) * 100;
-  console.log(Math.trunc(minValue), `minValue`);
   var children = event.target.parentNode.childNodes[1].childNodes;
   children[1].style.width = minValue + "%";
   children[5].style.left = minValue + "%";
@@ -114,13 +130,13 @@ function getMinRange(event) {
   children[11].childNodes[1].innerHTML = event.target.value;
 }
 
+// function to get max value from the range slider. 
 function getMaxRange(event) {
   event.target.value = Math.max(
     event.target.value,
     event.target.parentNode.childNodes[3].value - -1
   );
   maxValue = (event.target.value / parseInt(event.target.max)) * 100;
-  console.log(Math.trunc(maxValue), `maxValue`);
   var children = event.target.parentNode.childNodes[1].childNodes;
   children[3].style.width = 100 - maxValue + "%";
   children[5].style.right = 100 - maxValue + "%";
@@ -129,44 +145,29 @@ function getMaxRange(event) {
   children[13].childNodes[1].innerHTML = event.target.value;
   // localStorage.setItem("filterMaxRange",maxValue)
 }
+
+// function to show the all items in cart on next page.
 function showCartItem() {
-  console.log("here")
-  
   cartItemData = JSON.parse(localStorage.getItem("mobileCartData"));
-  cartItemData.map((item, i) => {
-    var d1 = document.createElement('div');
-    d1.setAttribute("id", "id_" + (i + 1));
-    d1.innerHTML = cartDataMobile(item.id, item.name, item.image, item.quantity, item.discountedPrice, item.rate)
-    document.getElementById("card__mobile").appendChild(d1);
-    totalCartQuantity=JSON.parse(localStorage.getItem("totalCartQuantity"))
-    
-  })
 
+  // card__mobile
+  var list = document.getElementById("card__mobile");
+  while (list.firstChild) {
+    list.removeChild(list.firstChild);
+  }
+  if (cartItemData && cartItemData.length > 0) {
+    cartItemData.map((item, i) => {
+      var d1 = document.createElement('div');
+      d1.setAttribute("id", "id_" + (i + 1));
+      d1.innerHTML = cartDataMobile(item.id, item.name, item.image, item.quantity, item.discountedPrice, item.rate)
+      document.getElementById("card__mobile").appendChild(d1);
+      totalCartQuantity=JSON.parse(localStorage.getItem("totalCartQuantity"))
+      
+    })
+  }
+}
 
-}
-const increaseQuantity = (id) => {
-  console.log("cartItemData", id)
-  
-  cartItemData.map((item) => {
-    if (item.id === id) {
-      item.quantity += 1
-    }
-    
-  })
-  localStorage.setItem('mobileCartData', JSON.stringify(cartItemData))
-  
-}
-const decreaseQuantity = (id) => {
-  console.log("cartItemData", id)
-  cartItemData.map((item) => {
-    if (item.id === id) {
-      item.quantity -= 1
-    }
-  })
-  localStorage.setItem('mobileCartData', JSON.stringify(cartItemData))
-
-  
-}
+// function to return all the cards of cart.
 const cartDataMobile = (index, name, image, quantity, discount, price) => {
   var totalDiscount = quantity * discount;
   var totalPrice = quantity * price;
@@ -198,47 +199,59 @@ const cartDataMobile = (index, name, image, quantity, discount, price) => {
     '</div>')
 }
 
+// increase the cart quantity.
+const increaseQuantity = (id) => {
+  mobileCartData = JSON.parse(localStorage.getItem("mobileCartData"));
 
-function filterApply() {
-  removeSort();
-  if (!localStorage.getItem("filterData")) {
-    tempData.map((item, i) => {
-      console.log(
-        "item.price.display",
-        item.price.display,
-        typeof item.price.display
-      );
-      if (
-        i > 0 &&
-        item.price.display >= minValue &&
-        item.price.display <= maxValue
-      ) {
-        filterData.push(item);
-      }
-    });
-    localStorage.setItem("filterData", JSON.stringify(filterData));
-    removeFilterIcon.style.display = "flex";
-  }
+  mobileCartData.map((item) => {
+    if (item.id === id) {
+      item.quantity += 1;
+    }
+  })
+  totalCartQuantity = Number(localStorage.getItem("totalCartQuantity"));
+  totalCartQuantity = totalCartQuantity + 1;
+  localStorage.setItem("totalCartQuantity", totalCartQuantity);
 
-  //need to update local storage data when user changes the range
-
-  console.log("tempData", tempData.length);
-
-  getMobileData();
-
-  modalFilter.style.display = "none";
+  localStorage.setItem('mobileCartData', JSON.stringify(mobileCartData));
+  mobileCartData = [];
+  showCartItem();
 }
-function removeFilter() {
-  if (localStorage.getItem("filterData")) {
-    filterData = [];
-    localStorage.removeItem("filterData");
-    getMobileData();
+
+// decrease the cart quantity.
+const decreaseQuantity = (id) => {
+
+  mobileCartData = JSON.parse(localStorage.getItem("mobileCartData"));
+  let currInd = -1;
+
+  mobileCartData.map((item) => {
+    if (item.id === id) {
+      if (item.quantity > 1) {
+        item.quantity -= 1;
+      }
+      else if (item.quantity == 1) {
+        item.quantity -= 1;
+        currInd = mobileCartData.indexOf(item);
+      }
+    }
+  })
+
+  if (currInd == -1) {
+    localStorage.setItem('mobileCartData', JSON.stringify(mobileCartData));
   }
-  removeFilterIcon.style.display = "none";
+  else {
+    mobileCartData.splice(currInd, 1);
+    localStorage.setItem('mobileCartData', JSON.stringify(mobileCartData));
+  }
+  totalCartQuantity = Number(localStorage.getItem("totalCartQuantity"));
+  totalCartQuantity = totalCartQuantity - 1;
+  localStorage.setItem("totalCartQuantity", totalCartQuantity);
+  mobileCartData = [];
+  showCartItem();
 }
 
 const addMobileDataToCart = (name, actualPrice, id, type, discountedPrice) => {
-  var mobileCartData = [];
+  mobileCartData = [];
+  
   let totalCartQuantity = 0;
   // cartNumber.innerHTML = localStorage.getItem("");
 
@@ -262,7 +275,6 @@ const addMobileDataToCart = (name, actualPrice, id, type, discountedPrice) => {
         // type 1, is used to add the data in cart
         temp.quantity = temp.quantity + 1;
         totalCartQuantity = Number(localStorage.getItem("totalCartQuantity"));
-        console.log("abc", Number(localStorage.getItem("totalCartQuantity")));
         totalCartQuantity = totalCartQuantity + 1;
         localStorage.setItem("totalCartQuantity", totalCartQuantity);
       } else {
@@ -387,6 +399,57 @@ const cardMobileText = (i, name, image, price, discount) => {
   );
 };
 
+//  Filter function 
+function filterApply() {
+  removeSort();
+  if (!localStorage.getItem("filterData")) {
+    tempData.map((item, i) => {
+      if (
+        i > 0 &&
+        item.price.display >= minValue &&
+        item.price.display <= maxValue
+      ) {
+        filterData.push(item);
+      }
+    });
+    localStorage.setItem("filterData", JSON.stringify(filterData));
+    removeFilterIcon.style.display = "flex";
+  }
+  else {
+    tempData = [];
+    tempData = JSON.parse(localStorage.getItem("filterData"));
+    tempData.map((item, i) => {
+      if (
+        i > 0 &&
+        item.price.display >= minValue &&
+        item.price.display <= maxValue
+      ) {
+        filterData.push(item);
+      }
+    });
+    localStorage.setItem("filterData", JSON.stringify(filterData));
+    removeFilterIcon.style.display = "flex";
+    
+  }
+
+  //need to update local storage data when user changes the range
+
+
+  getMobileData();
+
+  modalFilter.style.display = "none";
+}
+
+function removeFilter() {
+  if (localStorage.getItem("filterData")) {
+    filterData = [];
+    localStorage.removeItem("filterData");
+    getMobileData();
+  }
+  removeFilterIcon.style.display = "none";
+}
+
+// Functions to sort the data
 function sortAscending(a, b) {
   return a.price.display - b.price.display;
 }
@@ -408,11 +471,6 @@ function sortOptions() {
 
   if (!localStorage.getItem("sortData")) {
     tempData.map((item, i) => {
-      console.log(
-        "item.price.display",
-        item.price.display,
-        typeof item.price.display
-      );
       sortData.push(item);
     });
 
@@ -433,7 +491,6 @@ function sortOptions() {
   }
   localStorage.setItem("sortData", JSON.stringify(sortData));
 
-  console.log(sortData);
 
   modalSort.style.display = "none";
 
