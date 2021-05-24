@@ -1,11 +1,12 @@
 var tempData;
 var filterData = [];
+var result=[];
 var sortData = [];
 var mobileCartData = [];
 var cartItemData;
 var minValue = 9999;
 var maxValue = 200000;
-
+var data;
 let openSortModalButton = document.getElementById("sort-modal-button");
 let modalSort = document.getElementById("sort-modal-container");
 let closeSortModalButton = document.getElementById("sort-modal-close");
@@ -62,7 +63,24 @@ const getMobileData = async () => {
       document.getElementById("card-data__mobile").appendChild(d);
     });
   }
-
+  else if(result&&result.length>0){
+    var list = document.getElementById("card-data__mobile");
+    while (list.firstChild) {
+      list.removeChild(list.firstChild);
+    }
+    result.map((item, i) => {
+      var d = document.createElement("div");
+      d.setAttribute("id", "id_" + (i + 1));
+      d.innerHTML = cardMobileText(
+        i,
+        item.name,
+        item.image,
+        item.price,
+        item.discount
+      );
+      document.getElementById("card-data__mobile").appendChild(d);
+    });
+  }
   else if (JSON.parse(localStorage.getItem("sortData"))) {
     // if sorted data in present in the local, then show it.
     var list = document.getElementById("card-data__mobile");
@@ -95,7 +113,7 @@ const getMobileData = async () => {
     }
     
     const res = await fetch("./data/data.json");
-    const data = await res.json();
+     data = await res.json();
     tempData = data.items;
     data.items.map((item, i) => {
       var d = document.createElement("div");
@@ -122,6 +140,22 @@ const getMobileData = async () => {
   }
  
 };
+function search(event){
+  
+  let value = event.target.value.toLowerCase();
+  console.log("value",value)
+  console.log("temp",data)
+  if(data.items!==undefined){
+    result = data.items.filter((item) => {
+      // console.log("filter",item.name)
+      return item.name.toLowerCase().search(value) != -1;
+  });
+  }
+  
+getMobileData()
+console.log("result",result)
+
+}
 
 // function to get min range value from the range slider.
 function getMinRange(event) {
@@ -525,3 +559,4 @@ function removeSort() {
 
 getMobileData();
 showCartItem();
+// search()
