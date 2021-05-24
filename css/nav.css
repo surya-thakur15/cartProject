@@ -10,13 +10,15 @@
 #nav-notification {
   width: 90%;
   text-align: center;
-  display: none;
+  display: block;
+  /* background-color: white; */
 }
 
 .nav-btn {
-  background-color: var(--green);
+  /* background-color: var(--green); */
   border: none;
   border-radius: 5px;
   padding: 10px;
   color: var(--white);
+  background-color: white;
 }

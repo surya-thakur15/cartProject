@@ -1,11 +1,7 @@
 
 const addToCart = (name, actualPrice, id, type,discountedPrice) => {
-  const notificationButton = document.getElementById("nav-notification")
-  notificationButton.style.display = "block";
-  setTimeout(() => {
-    notificationButton.style.display = "none";
-  }, 3000)
-
+  
+  
 
   var cartData = []
   if (localStorage.getItem('cartData')) {
@@ -26,6 +22,11 @@ const addToCart = (name, actualPrice, id, type,discountedPrice) => {
       if (type == 1) {
         // type 1, is used to add the data in cart
         temp.quantity = temp.quantity + 1;
+        const notificationButton = document.getElementById("nav-btn")
+        notificationButton.style.backgroundColor = "rgb(125, 206, 125)";
+        setTimeout(() => {
+          notificationButton.style.backgroundColor = "white";
+        }, 2000)
       }
 
       else {
@@ -60,6 +61,11 @@ const addToCart = (name, actualPrice, id, type,discountedPrice) => {
 
     else {
       // current card data does not exists, need to add new data.
+      const notificationButton = document.getElementById("nav-btn")
+  notificationButton.style.backgroundColor = "rgb(125, 206, 125)";
+  setTimeout(() => {
+    notificationButton.style.backgroundColor = "white";
+  }, 2000)
       var obj = {
         'id': id,
         'name': name,
@@ -74,6 +80,7 @@ const addToCart = (name, actualPrice, id, type,discountedPrice) => {
   }
 
   else {
+    
     var obj = {
       'id': id,
       'name': name,
