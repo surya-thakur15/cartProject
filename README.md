@@ -1,4 +1,4 @@
-# Cart Project
+# Cart Project | [URL](https://surya-thakur15.github.io/cartProject/)
 ----
 ![](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen)  ![](https://img.shields.io/badge/release-v1.0.1-blue) [![GitHub forks](https://img.shields.io/github/forks/surya-thakur15/cartProject)](https://github.com/surya-thakur15/cartProject/network) [![GitHub issues](https://img.shields.io/github/issues/surya-thakur15/cartProject)](https://github.com/surya-thakur15/cartProject/issues)
 
